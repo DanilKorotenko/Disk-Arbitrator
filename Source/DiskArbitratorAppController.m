@@ -229,8 +229,18 @@
 		}
 
 		NSString *path = [options objectForKey:@"path"];
-		
-		[selectedDisk mountAtPath:path withArguments:arguments];
+
+		if (path.length == 0)
+		{
+			[selectedDisk mountAtPath:path withArguments:arguments];
+		}
+		else
+		{
+			Log(LOG_DEBUG, @"Only root processes can mount at custom path");
+
+//			TODO: begin alert sheet
+//			TODO: implement mount at custom path with privileged worker.
+		}
 	}
 }
 
